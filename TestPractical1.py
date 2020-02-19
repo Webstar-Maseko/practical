@@ -6,7 +6,7 @@ from enum import Enum, IntEnum
 testAgent = Agent(Action.Breakfast)
 
 # send the agent the details of the environment
-d1 = datetime(year = 2020, month = 2, day = 25, hour = 13, minute = 55, second = 59)
+d1 = datetime(year = 2020, month = 2, day = 6, hour = 20, minute = 55, second = 59)
 print(testAgent.sense_world(d1, False))
 
 # agent outputs results based on the state it is in
