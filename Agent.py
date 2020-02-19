@@ -23,26 +23,29 @@ class Agent:
         if sick:
             self.state = Action.Sleep
         else:
-            if(dt.day >= 1 and dt.day <= 5):
-                if(dt.hour == 6):
-                    self.state = Action.Breakfast
-                if(dt.day == 1 or dt.day == 3 or dt.day == 5):
+            if(dt.hour == 6):
+                self.state = Action.Breakfast
+            if(dt.weekday() >= 0 and dt.weekday() <= 4):
+                
+                if(dt.weekday() == 0 or dt.weekday() == 2 or dt.weekday() == 4):
+                    
                     if(dt.hour == 7):
                         self.state = Action.Gym
                     elif(dt.hour == 8):
                         self.state = Action.Class
-                elif(dt.hour >= 7 and dt.hour < 13):
-                    self.state = Action.Class
-                elif(dt.hour == 13):
-                    self.state = Action.Lunch
                 else:
-                    self.state = Action.Class
-                if(dt.hour == 17):
-                    self.state = Action.Television
+                    if(dt.hour >= 7 and dt.hour < 13):
+                        self.state = Action.Class
+            if(dt.hour == 13):
+                self.state = Action.Lunch
+            else:
+                self.state = Action.Class
+            if(dt.hour == 17):
+                self.state = Action.Television
             else:
                 if(dt.hour == 9):
                     self.state = Action.Breakfast
-                if(dt.day == 0):
+                if(dt.weekday() == 6):
                     if(dt.hour >9 and dt.hour <=10):
                         self.state = Action.Church
                     elif(dt.hour >10 and dt.hour < 14):
